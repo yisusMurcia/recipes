@@ -16,8 +16,8 @@ public class MainView extends JFrame {
 	private final ViewControl viewControl;
 
 	public MainView(ViewControl viewControl) {
+		
 		this.viewControl = viewControl;
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,6 +76,7 @@ public class MainView extends JFrame {
 		contentPane.add(registerBtn, gbc_btnRegistrarme);
 
 		setVisible(true);
+		
 	}
 
 	public void alertBrokenSystem(){

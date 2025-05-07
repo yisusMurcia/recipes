@@ -23,7 +23,9 @@ public class NewUserView extends JFrame {
 	private JTextField tfUser;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
+	
 	public NewUserView() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -142,6 +144,7 @@ public class NewUserView extends JFrame {
 		contentPane.add(btnInicioSesion, gbc_btnInicioSesion);
 
 		setVisible(true);
+		
 	}
 
 }

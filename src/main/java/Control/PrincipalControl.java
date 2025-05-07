@@ -12,4 +12,8 @@ public class PrincipalControl {
     public PrincipalControl() {
         viewControl = new ViewControl(this);
     }
+    
+    public User getUser() {
+    	return user;
+    }
 }

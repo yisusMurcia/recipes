@@ -4,10 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Model.User;
+import Control.ViewControl;
 
 import java.awt.GridBagLayout;
 import javax.swing.JTabbedPane;
+
+import java.awt.Button;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JLabel;
@@ -20,14 +22,14 @@ public class MyAccount extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	// Manejar con el control
-	private User user;
-	private int contador;
+	private final ViewControl viewControl;
+	private JButton btnNext;
+	private JButton btnPrevious;
+	private JLabel lblInstrucciones;
+	private JTextPane tpIngredientes;
 
-	public MyAccount(User user) {
-		this.user = user;
-		this.contador = 0;
-		setVisible(true);
+	public MyAccount(ViewControl viewControl) {
+		this.viewControl = viewControl;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -61,7 +63,7 @@ public class MyAccount extends JFrame {
 		lblNewLabel.setBounds(88, 11, 55, 14);
 		panelRecipe.add(lblNewLabel);
 		
-		JLabel lblInstrucciones = new JLabel("Instrucciones:");
+		lblInstrucciones = new JLabel("Instrucciones:");
 		lblInstrucciones.setBounds(10, 111, 83, 14);
 		panelRecipe.add(lblInstrucciones);
 		
@@ -69,49 +71,38 @@ public class MyAccount extends JFrame {
 		lblIngredientes.setBounds(10, 36, 83, 14);
 		panelRecipe.add(lblIngredientes);
 		
-		JTextPane tpIngredientes = new JTextPane();
+		tpIngredientes = new JTextPane();
 		tpIngredientes.setBounds(10, 57, 195, 46);
 		panelRecipe.add(tpIngredientes);
 		
-		JButton btnNext = new JButton("-->");
-		btnNext.addActionListener(new ActionListener() {
-			// Trabajar con el control
-			public void actionPerformed(ActionEvent e) {
-				contador += 1;
-				lblInstrucciones.setText("");
-				tpIngredientes.setText("");
-				lblInstrucciones.setText("Instrucciones: " + user.getRecipes().get(contador).getInstructions());
-				String ingredientes = tpIngredientes.getText();
-				tpIngredientes.setText(ingredientes + user.getRecipes().get(contador).getIngredients().get(0) + "\n");
-				for (int i=1; i<=2; i++) {
-					ingredientes = tpIngredientes.getText();
-					tpIngredientes.setText(ingredientes + "\n" + user.getRecipes().get(contador).getIngredients().get(i) + "\n");
-				}
-			}
-		});
+		btnNext = new JButton("-->");
 		btnNext.setBounds(259, 41, 52, 23);
 		panel.add(btnNext);
 		
-		JButton btnPrevious = new JButton("<--");
-		btnPrevious.addActionListener(new ActionListener() {
-			// Trabajar con el constructor
-			public void actionPerformed(ActionEvent e) {
-				contador -= 1;
-				lblInstrucciones.setText("");
-				tpIngredientes.setText("");
-				lblInstrucciones.setText("Instrucciones: " + user.getRecipes().get(contador).getInstructions());
-				String ingredientes = tpIngredientes.getText();
-				tpIngredientes.setText(ingredientes + user.getRecipes().get(contador).getIngredients().get(0) + "\n");
-				for (int i=1; i<=2; i++) {
-					ingredientes = tpIngredientes.getText();
-					tpIngredientes.setText(ingredientes + "\n" + user.getRecipes().get(contador).getIngredients().get(i) + "\n");
-				}
-			}
-		});
+		btnPrevious = new JButton("<--");
 		btnPrevious.setBounds(259, 86, 52, 23);
 		panel.add(btnPrevious);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Mis favoritos", null, panel_1, null);
+		
+		setVisible(true);
 	}
+	
+	public JButton getBtnNext() {
+		return btnNext;
+	}
+	
+	public JButton getBtnPrevious() {
+		return btnPrevious;
+	}
+	
+	public JLabel getLblInstrucciones() {
+		return lblInstrucciones;
+	}
+	
+	public JTextPane getTpIngredientes() {
+		return tpIngredientes;
+	}
+	
 }
