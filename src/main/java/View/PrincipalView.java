@@ -5,20 +5,19 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Control.ViewControl;
+import Model.User;
 
 import java.awt.GridBagLayout;
 import javax.swing.JTabbedPane;
 
-import java.awt.Button;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import javax.swing.JTextPane;
 
-public class MyAccount extends JFrame {
+public class PrincipalView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,8 +27,12 @@ public class MyAccount extends JFrame {
 	private JLabel lblInstrucciones;
 	private JTextPane tpIngredientes;
 
-	public MyAccount(ViewControl viewControl) {
+	private User user;
+
+	public PrincipalView(ViewControl viewControl, User user) {
 		this.viewControl = viewControl;
+		this.user = user;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -103,6 +106,18 @@ public class MyAccount extends JFrame {
 	
 	public JTextPane getTpIngredientes() {
 		return tpIngredientes;
+	}
+
+	public void setIngredientsText(ArrayList<String> ingredients){
+		StringBuilder ingredientsText = new StringBuilder();
+		for (String ingredient : ingredients) {
+			ingredientsText.append(ingredient).append("\n");
+		}
+		tpIngredientes.setText(ingredientsText.toString());
+	}
+
+	public void setInstructions(String instructions){
+		lblInstrucciones.setText("Instrucciones:" + instructions);
 	}
 	
 }

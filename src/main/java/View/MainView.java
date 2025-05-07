@@ -57,7 +57,7 @@ public class MainView extends JFrame {
 		contentPane.add(lblBienvenida, gbc_lblBienvenida);
 
 		JButton logginBtn = new JButton("Iniciar sesión");
-		logginBtn.setActionCommand("loggin");
+		logginBtn.setActionCommand("login");
 		logginBtn.addActionListener(viewControl);
 		GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
 		gbc_btnInicioSesion.insets = new Insets(0, 0, 5, 5);

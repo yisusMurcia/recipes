@@ -1,27 +1,23 @@
 package View;
 
+import Control.LoginControl;
 import Control.ViewControl;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class LoginView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField tfUser;
-	private JTextField tfPassword;
+	private JPasswordField tfPassword;
 	
-	public LoginView() {
+	public LoginView(LoginControl loginControl) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -89,7 +85,7 @@ public class LoginView extends JFrame {
 		gbc_lblPassword.gridy = 6;
 		contentPane.add(labelPassword, gbc_lblPassword);
 		
-		tfPassword = new JTextField();
+		tfPassword = new JPasswordField();
 		tfPassword.setColumns(10);
 		GridBagConstraints gbc_tfPassword = new GridBagConstraints();
 		gbc_tfPassword.insets = new Insets(0, 0, 5, 5);
@@ -98,14 +94,27 @@ public class LoginView extends JFrame {
 		gbc_tfPassword.gridy = 7;
 		contentPane.add(tfPassword, gbc_tfPassword);
 		
-		JButton btnInicioSesion = new JButton("Iniciar sesión");
+		JButton btnLogin = new JButton("Iniciar sesión");
+		btnLogin.setActionCommand("login");
+		btnLogin.addActionListener(loginControl);
+
 		GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
 		gbc_btnInicioSesion.insets = new Insets(0, 0, 5, 5);
 		gbc_btnInicioSesion.gridx = 2;
 		gbc_btnInicioSesion.gridy = 9;
-		contentPane.add(btnInicioSesion, gbc_btnInicioSesion);
+		contentPane.add(btnLogin, gbc_btnInicioSesion);
 		
 		setVisible(true);
 	}
+	public String getUserName(){
+		return tfUser.getText();
+	}
 
+	public String getPassword(){
+		return new String(tfPassword.getPassword());
+	}
+
+	public void alertValidationError(){
+		JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+	}
 }

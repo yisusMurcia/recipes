@@ -1,6 +1,7 @@
 package View;
 
-import Control.ViewControl;
+import Control.LoginControl;
+import Control.UserControl;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,9 +23,10 @@ public class NewUserView extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfUser;
 	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private JPasswordField adminPasswordField;
+    private JComboBox rolSelection;
 	
-	public NewUserView() {
+	public NewUserView(LoginControl loginControl) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -110,15 +112,15 @@ public class NewUserView extends JFrame {
 		gbc_lblRol.gridy = 8;
 		contentPane.add(lblRol, gbc_lblRol);
 		
-		JComboBox comboBox = new JComboBox();
+		rolSelection = new JComboBox(new String []{"User", "Admin"});
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 2;
 		gbc_comboBox.gridy = 9;
-		contentPane.add(comboBox, gbc_comboBox);
+		contentPane.add(rolSelection, gbc_comboBox);
 		
-		JLabel lblContraseaDeAdministrador = new JLabel("Contraseña de administrador:");
+		JLabel lblContraseaDeAdministrador = new JLabel("Contraseña de administrador: (opcional)");
 		lblContraseaDeAdministrador.setHorizontalAlignment(SwingConstants.LEFT);
 		lblContraseaDeAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblContraseaDeAdministrador = new GridBagConstraints();
@@ -128,23 +130,39 @@ public class NewUserView extends JFrame {
 		gbc_lblContraseaDeAdministrador.gridy = 10;
 		contentPane.add(lblContraseaDeAdministrador, gbc_lblContraseaDeAdministrador);
 		
-		passwordField_1 = new JPasswordField();
+		adminPasswordField = new JPasswordField();
 		GridBagConstraints gbc_passwordField_1 = new GridBagConstraints();
 		gbc_passwordField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_passwordField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_passwordField_1.gridx = 2;
 		gbc_passwordField_1.gridy = 11;
-		contentPane.add(passwordField_1, gbc_passwordField_1);
+		contentPane.add(adminPasswordField, gbc_passwordField_1);
 		
-		JButton btnInicioSesion = new JButton("Registrarme");
+		JButton signUpBtn = new JButton("Registrarme");
+        signUpBtn.setActionCommand("signup");
+        signUpBtn.addActionListener(loginControl);
 		GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
 		gbc_btnInicioSesion.insets = new Insets(0, 0, 5, 5);
 		gbc_btnInicioSesion.gridx = 2;
 		gbc_btnInicioSesion.gridy = 13;
-		contentPane.add(btnInicioSesion, gbc_btnInicioSesion);
+		contentPane.add(signUpBtn, gbc_btnInicioSesion);
 
 		setVisible(true);
 		
 	}
 
+    public String getName() {
+        return tfUser.getText();
+    }
+    public String getPassword() {
+        return new String(passwordField.getPassword());
+    }
+
+    public String getPasswordAdmin() {
+        return new String(adminPasswordField.getPassword());
+    }
+
+    public String getRol() {
+        return rolSelection.getSelectedItem().toString();
+    }
 }
