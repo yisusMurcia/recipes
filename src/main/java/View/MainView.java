@@ -1,23 +1,23 @@
 package View;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import Control.ViewControl;
+
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private final ViewControl viewControl;
 
-	public MainView() {
+	public MainView(ViewControl viewControl) {
+		this.viewControl = viewControl;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -55,26 +55,31 @@ public class MainView extends JFrame {
 		gbc_lblBienvenida.gridx = 1;
 		gbc_lblBienvenida.gridy = 3;
 		contentPane.add(lblBienvenida, gbc_lblBienvenida);
-		
-		JButton btnInicioSesion = new JButton("Iniciar sesión");
-		btnInicioSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
+		JButton logginBtn = new JButton("Iniciar sesión");
+		logginBtn.setActionCommand("loggin");
+		logginBtn.addActionListener(viewControl);
 		GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
 		gbc_btnInicioSesion.insets = new Insets(0, 0, 5, 5);
 		gbc_btnInicioSesion.gridx = 1;
 		gbc_btnInicioSesion.gridy = 5;
-		contentPane.add(btnInicioSesion, gbc_btnInicioSesion);
+		contentPane.add(logginBtn, gbc_btnInicioSesion);
 		
-		JButton btnRegistrarme = new JButton("Registrarme");
+		JButton registerBtn = new JButton("Registrarme");
+		registerBtn.setActionCommand("register");
+		registerBtn.addActionListener(viewControl);
+
 		GridBagConstraints gbc_btnRegistrarme = new GridBagConstraints();
 		gbc_btnRegistrarme.insets = new Insets(0, 0, 5, 5);
 		gbc_btnRegistrarme.gridx = 2;
 		gbc_btnRegistrarme.gridy = 5;
-		contentPane.add(btnRegistrarme, gbc_btnRegistrarme);
+		contentPane.add(registerBtn, gbc_btnRegistrarme);
+
+		setVisible(true);
 	}
-	
-	
+
+	public void alertBrokenSystem(){
+		JOptionPane.showMessageDialog(this, "Felicitaciones, has roto el programa");
+	}
 
 }

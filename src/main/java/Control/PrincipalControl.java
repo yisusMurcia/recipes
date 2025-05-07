@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class PrincipalControl {
     private ArrayList<Recipe> recipes;
     private User user;
-    private final ControlView viewControl;
+    private final ViewControl viewControl;
 
     public PrincipalControl() {
-        viewControl = new ControlView(this);
+        viewControl = new ViewControl(this);
     }
 }

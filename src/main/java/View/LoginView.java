@@ -1,5 +1,7 @@
 package View;
 
+import Control.ViewControl;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,6 +21,7 @@ public class LoginView extends JFrame {
 	private JTextField tfUser;
 	private JTextField tfPassword;
 	public LoginView() {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -100,6 +103,8 @@ public class LoginView extends JFrame {
 		gbc_btnInicioSesion.gridx = 2;
 		gbc_btnInicioSesion.gridy = 9;
 		contentPane.add(btnInicioSesion, gbc_btnInicioSesion);
+
+		setVisible(true);
 	}
 
 }
