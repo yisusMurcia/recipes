@@ -42,21 +42,4 @@ public class ViewControl implements ActionListener {
                 break;
         }
     }
-    /*
-    public void funcBtnNext() {
-    	myAccount.getBtnNext().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				contador += 1;
-				myAccount.getLblInstrucciones().setText("");
-				myAccount.getTpIngredientes().setText("");
-				myAccount.getLblInstrucciones().setText("Instrucciones: " + pControl.getUser().getRecipes().get(contador).getInstructions());
-				String ingredientes = myAccount.getTpIngredientes().getText();
-				myAccount.getTpIngredientes().setText(ingredientes + pControl.getUser().getRecipes().get(contador).getIngredients().get(0) + "\n");
-				for (int i=1; i<=2; i++) {
-					ingredientes = myAccount.getTpIngredientes().getText();
-					myAccount.getTpIngredientes().setText(ingredientes + "\n" + pControl.getUser().getRecipes().get(contador).getIngredients().get(i) + "\n");
-				}
-			}
-		});
-    }*/
 }

@@ -115,6 +115,6 @@ public class LoginView extends JFrame {
 	}
 
 	public void alertValidationError(){
-		JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+		JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta","Error", JOptionPane.ERROR_MESSAGE);
 	}
 }

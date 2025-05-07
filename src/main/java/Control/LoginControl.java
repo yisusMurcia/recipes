@@ -1,6 +1,9 @@
 package Control;
 
+import Exceptions.NameException;
+import Exceptions.NullPassError;
 import Exceptions.ValidationError;
+import Model.User;
 import View.LoginView;
 import View.NewUserView;
 
@@ -30,7 +33,18 @@ public class LoginControl implements ActionListener {
                     loginView.alertValidationError();
                 }
                 break;
-            case "register":
+            case "signup":
+                try{
+                    User user;
+                    user = principalControl.getUserControl().CreateUser(newUserView.getName(), newUserView.getPassword(), newUserView.getRol().equals("admin"));
+                    principalControl.setUser(user);
+                    newUserView.dispose();
+                    viewControl.createMYAccount();
+                } catch (NameException ex) {
+                    newUserView.alertNameError();
+                } catch (NullPassError ex) {
+                    newUserView.alertNullPassError();
+                }
         }
     }
 

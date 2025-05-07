@@ -3,19 +3,12 @@ package View;
 import Control.LoginControl;
 import Control.UserControl;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPasswordField;
 
 public class NewUserView extends JFrame {
 
@@ -164,5 +157,13 @@ public class NewUserView extends JFrame {
 
     public String getRol() {
         return rolSelection.getSelectedItem().toString();
+    }
+
+    public void alertNameError() {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void alertNullPassError() {
+        JOptionPane.showMessageDialog(this, "La contraseña o el nombre no pueden ser nula", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
