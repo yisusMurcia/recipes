@@ -22,6 +22,10 @@ public class PrincipalControl {
         return userControl;
     }
 
+    public ArrayList<Recipe> getRecipes() {
+        return recipes;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
