@@ -1,7 +1,6 @@
 package View;
 
 import Control.LoginControl;
-import Control.ViewControl;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,17 +10,14 @@ import java.awt.Font;
 import java.awt.Insets;
 
 public class LoginView extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField tfUser;
-	private JPasswordField tfPassword;
+    private final JTextField tfUser;
+	private final JPasswordField tfPassword;
 	
 	public LoginView(LoginControl loginControl) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -48,13 +44,13 @@ public class LoginView extends JFrame {
 		gbc_lblNewLabel.gridy = 1;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JLabel lblIniciaSesinEn = new JLabel("Inicia sesión en tu cueta:");
-		lblIniciaSesinEn.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblIniciaSesinEn = new GridBagConstraints();
-		gbc_lblIniciaSesinEn.insets = new Insets(0, 0, 5, 5);
-		gbc_lblIniciaSesinEn.gridx = 2;
-		gbc_lblIniciaSesinEn.gridy = 2;
-		contentPane.add(lblIniciaSesinEn, gbc_lblIniciaSesinEn);
+		JLabel loginLbl = new JLabel("Inicia sesión en tu cuenta:");
+		loginLbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GridBagConstraints gbc_singInLbl = new GridBagConstraints();
+		gbc_singInLbl.insets = new Insets(0, 0, 5, 5);
+		gbc_singInLbl.gridx = 2;
+		gbc_singInLbl.gridy = 2;
+		contentPane.add(loginLbl, gbc_singInLbl);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
@@ -98,11 +94,11 @@ public class LoginView extends JFrame {
 		btnLogin.setActionCommand("login");
 		btnLogin.addActionListener(loginControl);
 
-		GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
-		gbc_btnInicioSesion.insets = new Insets(0, 0, 5, 5);
-		gbc_btnInicioSesion.gridx = 2;
-		gbc_btnInicioSesion.gridy = 9;
-		contentPane.add(btnLogin, gbc_btnInicioSesion);
+		GridBagConstraints signIn = new GridBagConstraints();
+		signIn.insets = new Insets(0, 0, 5, 5);
+		signIn.gridx = 2;
+		signIn.gridy = 9;
+		contentPane.add(btnLogin, signIn);
 		
 		setVisible(true);
 	}

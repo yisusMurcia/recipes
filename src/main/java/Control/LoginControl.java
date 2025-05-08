@@ -18,7 +18,7 @@ public class LoginControl implements ActionListener {
 
     public LoginControl(ViewControl viewControl) {
         this.viewControl = viewControl;
-        principalControl = viewControl.getpControl();
+        principalControl = viewControl.getPrincipalControl();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class LoginControl implements ActionListener {
                     if(isAdmin && !newUserView.getPasswordAdmin().equals("iAmAdmin")){
                         newUserView.alertInvalidAdminPassword();
                         break;
-                    };
+                    }
                     user = principalControl.getUserControl().CreateUser(newUserView.getName(), newUserView.getPassword(), isAdmin);
                     principalControl.setUser(user);
                     newUserView.dispose();

@@ -8,22 +8,22 @@ import java.awt.event.ActionListener;
 
 public class ViewControl implements ActionListener {
 
-    private final PrincipalControl pControl;
+    private final PrincipalControl principalControl;
     private final MainView mainView;
     private static int contador = 0;
 
-    public ViewControl(PrincipalControl pControl) {
-        this.pControl = pControl;
+    public ViewControl(PrincipalControl principalControl) {
+        this.principalControl = principalControl;
         //Create MainView
         mainView = new MainView(this);
     }
 
-    public PrincipalControl getpControl() {
-        return pControl;
+    public PrincipalControl getPrincipalControl() {
+        return principalControl;
     }
 
     public void createMYAccount(){
-        new PrincipalView(this, pControl.getUser());
+        new PrincipalView(this, principalControl.getUser());
     }
 
     @Override

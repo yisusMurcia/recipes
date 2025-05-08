@@ -1,7 +1,6 @@
 package View;
 
 import Control.LoginControl;
-import Control.UserControl;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,19 +10,16 @@ import java.awt.Font;
 import java.awt.Insets;
 
 public class NewUserView extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField tfUser;
-	private JPasswordField passwordField;
-	private JPasswordField adminPasswordField;
-    private JComboBox rolSelection;
+    private final JTextField tfUser;
+	private final JPasswordField passwordField;
+	private final JPasswordField adminPasswordField;
+    private final JComboBox rolSelection;
 	
 	public NewUserView(LoginControl loginControl) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -50,13 +46,13 @@ public class NewUserView extends JFrame {
 		gbc_lblNewLabel.gridy = 1;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JLabel lblIniciaSesinEn = new JLabel("Unete y acompaña esta divertida búsqueda para descubrir tu próxima receta favorita");
-		lblIniciaSesinEn.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		JLabel enterLbl = new JLabel("Únete y acompaña esta divertida búsqueda para descubrir tu próxima receta favorita");
+		enterLbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblLogin = new GridBagConstraints();
 		gbc_lblLogin.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLogin.gridx = 2;
 		gbc_lblLogin.gridy = 2;
-		contentPane.add(lblIniciaSesinEn, gbc_lblLogin);
+		contentPane.add(enterLbl, gbc_lblLogin);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
@@ -77,15 +73,15 @@ public class NewUserView extends JFrame {
 		contentPane.add(tfUser, gbc_tfUser);
 		tfUser.setColumns(10);
 		
-		JLabel lblContrasea = new JLabel("Contraseña:");
-		lblContrasea.setHorizontalAlignment(SwingConstants.LEFT);
-		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblContrasea = new GridBagConstraints();
-		gbc_lblContrasea.insets = new Insets(0, 0, 5, 5);
-		gbc_lblContrasea.anchor = GridBagConstraints.WEST;
-		gbc_lblContrasea.gridx = 2;
-		gbc_lblContrasea.gridy = 6;
-		contentPane.add(lblContrasea, gbc_lblContrasea);
+		JLabel passwordLabel = new JLabel("Contraseña:");
+		passwordLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
+		gbc_passwordLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordLabel.anchor = GridBagConstraints.WEST;
+		gbc_passwordLabel.gridx = 2;
+		gbc_passwordLabel.gridy = 6;
+		contentPane.add(passwordLabel, gbc_passwordLabel);
 		
 		passwordField = new JPasswordField();
 		GridBagConstraints gbc_passwordField = new GridBagConstraints();
@@ -113,15 +109,15 @@ public class NewUserView extends JFrame {
 		gbc_comboBox.gridy = 9;
 		contentPane.add(rolSelection, gbc_comboBox);
 		
-		JLabel lblContraseaDeAdministrador = new JLabel("Contraseña de administrador: (opcional)");
-		lblContraseaDeAdministrador.setHorizontalAlignment(SwingConstants.LEFT);
-		lblContraseaDeAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblContraseaDeAdministrador = new GridBagConstraints();
-		gbc_lblContraseaDeAdministrador.anchor = GridBagConstraints.WEST;
-		gbc_lblContraseaDeAdministrador.insets = new Insets(0, 0, 5, 5);
-		gbc_lblContraseaDeAdministrador.gridx = 2;
-		gbc_lblContraseaDeAdministrador.gridy = 10;
-		contentPane.add(lblContraseaDeAdministrador, gbc_lblContraseaDeAdministrador);
+		JLabel adminPasswordLbl = new JLabel("Contraseña de administrador: (opcional)");
+		adminPasswordLbl.setHorizontalAlignment(SwingConstants.LEFT);
+		adminPasswordLbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GridBagConstraints gbc_adminPasswordLbl = new GridBagConstraints();
+		gbc_adminPasswordLbl.anchor = GridBagConstraints.WEST;
+		gbc_adminPasswordLbl.insets = new Insets(0, 0, 5, 5);
+		gbc_adminPasswordLbl.gridx = 2;
+		gbc_adminPasswordLbl.gridy = 10;
+		contentPane.add(adminPasswordLbl, gbc_adminPasswordLbl);
 		
 		adminPasswordField = new JPasswordField();
 		GridBagConstraints gbc_passwordField_1 = new GridBagConstraints();
@@ -134,11 +130,11 @@ public class NewUserView extends JFrame {
 		JButton signUpBtn = new JButton("Registrarme");
         signUpBtn.setActionCommand("signup");
         signUpBtn.addActionListener(loginControl);
-		GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
-		gbc_btnInicioSesion.insets = new Insets(0, 0, 5, 5);
-		gbc_btnInicioSesion.gridx = 2;
-		gbc_btnInicioSesion.gridy = 13;
-		contentPane.add(signUpBtn, gbc_btnInicioSesion);
+		GridBagConstraints gbc_signupBtn = new GridBagConstraints();
+		gbc_signupBtn.insets = new Insets(0, 0, 5, 5);
+		gbc_signupBtn.gridx = 2;
+		gbc_signupBtn.gridy = 13;
+		contentPane.add(signUpBtn, gbc_signupBtn);
 
 		setVisible(true);
 		
