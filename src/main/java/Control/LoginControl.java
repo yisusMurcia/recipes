@@ -36,7 +36,13 @@ public class LoginControl implements ActionListener {
             case "signup":
                 try{
                     User user;
-                    user = principalControl.getUserControl().CreateUser(newUserView.getName(), newUserView.getPassword(), newUserView.getRol().equals("admin"));
+                    //Validate if the user is admin (option and password)
+                    boolean isAdmin = newUserView.getRol().equals("Admin");
+                    if(isAdmin && !newUserView.getPasswordAdmin().equals("iAmAdmin")){
+                        newUserView.alertInvalidAdminPassword();
+                        break;
+                    };
+                    user = principalControl.getUserControl().CreateUser(newUserView.getName(), newUserView.getPassword(), isAdmin);
                     principalControl.setUser(user);
                     newUserView.dispose();
                     viewControl.createMYAccount();

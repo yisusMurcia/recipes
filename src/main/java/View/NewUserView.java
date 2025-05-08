@@ -166,4 +166,8 @@ public class NewUserView extends JFrame {
     public void alertNullPassError() {
         JOptionPane.showMessageDialog(this, "La contraseña o el nombre no pueden ser nula", "Error", JOptionPane.ERROR_MESSAGE);
     }
+
+	public void alertInvalidAdminPassword(){
+		JOptionPane.showMessageDialog(this, "Contraseña de administrador incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+	}
 }
