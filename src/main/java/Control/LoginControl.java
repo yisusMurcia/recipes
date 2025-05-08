@@ -53,11 +53,11 @@ public class LoginControl implements ActionListener {
                 }
             case "Rol selection":
                 String selectedRol = (String) newUserView.getRolSelection();
-                System.out.println(selectedRol);
                 newUserView.getAdminPasswordField().setEnabled(selectedRol.equals("Admin"));
                 newUserView.getAdminPasswordLbl().setEnabled(selectedRol.equals("Admin"));
                 newUserView.repaint();
         }
+        System.out.println(principalControl.getUser());
     }
     public void createLoginView(){
         loginView = new LoginView(this);

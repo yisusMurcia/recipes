@@ -16,7 +16,7 @@ public class UserControl {
 
         //Create some users
         users.add(new User("u", "u"));
-        users.add(new User("user2", "password2"));
+        users.add(new Admin("a", "a"));
     }
 
     public User validateUser(String name, String password) throws ValidationError {

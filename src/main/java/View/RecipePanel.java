@@ -17,11 +17,18 @@ public class RecipePanel extends JPanel {
     private JButton previousBtn;
     private Recipe recipe;
     private ArrayList<Recipe> recipes;
+    private final JButton newRecipeBtn;
+    private final JButton editRecipeBtn;
+    private JButton giveFavBtn;
+    private final ControlPanel controlPanel;
 
-    public RecipePanel(String title, ArrayList<Recipe> recipes, ControlPanel controlPanel) {
+    public RecipePanel(ArrayList<Recipe> recipes, ControlPanel controlPanel) {
+        if(!recipes.isEmpty()){
+            recipe = recipes.getFirst();
+        }
         setLayout(new BorderLayout(10, 10)); // Espaciado entre componentes
-        recipe = recipes.getFirst();
         this.recipes= recipes;
+        this.controlPanel = controlPanel;
 
         // Panel superior para el título
         JPanel titlePanel = new JPanel();
@@ -50,17 +57,33 @@ public class RecipePanel extends JPanel {
         add(centerPanel, BorderLayout.CENTER);
 
         // Panel inferior para los botones
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10)); // Espaciado entre botones
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 10)); // Espaciado entre botones
+
+        editRecipeBtn = new JButton("Editar");
+        editRecipeBtn.setActionCommand("edit");
+        editRecipeBtn.addActionListener(controlPanel);
+
         nextBtn = new JButton("-->");
         nextBtn.setActionCommand("next");
         nextBtn.addActionListener(controlPanel);
+
+        giveFavBtn = new JButton();
+        giveFavBtn.setActionCommand("giveFav");
+        giveFavBtn.addActionListener(controlPanel);
 
         previousBtn = new JButton("<--");
         previousBtn.setActionCommand("previous");
         previousBtn.addActionListener(controlPanel);
 
+        newRecipeBtn = new JButton("Subir receta");
+        newRecipeBtn.setActionCommand("new");
+        newRecipeBtn.addActionListener(controlPanel);
+
+        buttonPanel.add(newRecipeBtn);
         buttonPanel.add(previousBtn);
+        buttonPanel.add(giveFavBtn);
         buttonPanel.add(nextBtn);
+        buttonPanel.add(editRecipeBtn);
         add(buttonPanel, BorderLayout.SOUTH);
 
         updateRecipe();
@@ -74,10 +97,38 @@ public class RecipePanel extends JPanel {
         ingredientsTp.setText(ingredientsString.toString());
     }
 
-    private void updateRecipe() {
-        recipeNameLbl.setText(recipe.getTitle());
-        instructionsLbl.setText("<html><b>Instrucciones:</b><br>" + recipe.getInstructions() + "</html>");
-        addIngredientsString();
+
+    public void setRecipes(ArrayList<Recipe> recipes) {
+        this.recipes = recipes;
+        if(!recipes.isEmpty()) {
+            recipe = recipes.getFirst();
+        }else{
+            recipe = null;
+        }
+        updateRecipe();
+    }
+
+    public void updateRecipe() {
+        if(recipe != null){
+            recipeNameLbl.setText(recipe.getTitle());
+            instructionsLbl.setText("<html><b>Instrucciones:</b><br>" + recipe.getInstructions() + "</html>");
+            addIngredientsString();
+
+            //change fav button text if user have already liked the function
+            for(Recipe favRecipe : controlPanel.getViewControl().getPrincipalControl().getUser().getFavs()) {
+                if(favRecipe == recipe){
+                    giveFavBtn.setText("No me gusta");
+                    return ;
+                }
+            }
+        }else{
+            recipeNameLbl.setText("");
+            instructionsLbl.setText("");
+            ingredientsTp.setText("");
+            ingredientsLbl.setText("");
+
+        }
+        giveFavBtn.setText("Me gusta");
     }
 
     public int getRecipeIndex() {
@@ -87,5 +138,9 @@ public class RecipePanel extends JPanel {
     public void setRecipe(int recipeIndex) {
         recipe = recipes.get(recipeIndex);
         updateRecipe();
+    }
+
+    public void alertPermisionInvalid(){
+        JOptionPane.showMessageDialog(null, "No puedes editar esta receta", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

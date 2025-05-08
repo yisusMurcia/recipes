@@ -26,13 +26,10 @@ public class PrincipalView extends JFrame {
 	private JLabel lblInstrucciones;
 	private JTextPane tpIngredientes;
 
-	private User user;
-
-	public PrincipalView(ViewControl viewControl, User user, ControlPanel controlAllRecipes, ControlPanel controlFavRecipes, ControlPanel controlMyRecipes) {
+    public PrincipalView(ViewControl viewControl,ControlPanel controlAllRecipes, ControlPanel controlFavRecipes, ControlPanel controlMyRecipes) {
 		this.viewControl = viewControl;
-		this.user = user;
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,11 +50,11 @@ public class PrincipalView extends JFrame {
 		gbc_tabbedPane.gridy = 1;
 		contentPane.add(tabbedPane, gbc_tabbedPane);
 
-		tabbedPane.addTab("A por más recetas", null, controlAllRecipes.createPanel(), null);
+		tabbedPane.addTab("A por más recetas", null, controlAllRecipes.getPanel(), null);
 
-		tabbedPane.addTab("Mis recetas", null, controlMyRecipes.createPanel(), null);
+		tabbedPane.addTab("Mis recetas", null, controlMyRecipes.getPanel(), null);
 
-		tabbedPane.addTab("Mis favoritos", null, controlFavRecipes.createPanel(), null);
+		tabbedPane.addTab("Mis favoritos", null, controlFavRecipes.getPanel(), null);
 		
 		setVisible(true);
 	}

@@ -11,6 +11,9 @@ public class ViewControl implements ActionListener {
     private final PrincipalControl principalControl;
     private final StartingView startingView;
     private static int contador = 0;
+    private ControlPanel allRecipesControl;
+    private ControlPanel myRecipesControl;
+    private ControlPanel favRecipesControl;
 
     public ViewControl(PrincipalControl principalControl) {
         this.principalControl = principalControl;
@@ -23,10 +26,12 @@ public class ViewControl implements ActionListener {
     }
 
     public void createMYAccount(){
-        //Crear algunas recetas
+        //Create panel Controls
+        allRecipesControl = new ControlPanel(principalControl.getRecipes(), this);
+        myRecipesControl = new ControlPanel(principalControl.getUser().getRecipes(), this);
+        favRecipesControl = new ControlPanel(principalControl.getUser().getFavs(), this);
 
-        //ControlPanel allRecipesControl = new ControlPanel("A por más recetas", principalControl.getRecipes());
-        new PrincipalView(this, principalControl.getUser(), new ControlPanel("A por más recetas", principalControl.getRecipes()), new ControlPanel("A por más recetas", principalControl.getRecipes()), new ControlPanel("A por más recetas", principalControl.getRecipes()));
+        new PrincipalView(this,  allRecipesControl, favRecipesControl, myRecipesControl);
     }
 
     @Override
@@ -44,5 +49,12 @@ public class ViewControl implements ActionListener {
                 startingView.alertBrokenSystem();
                 break;
         }
+    }
+
+    public void updateRecipes() {
+        allRecipesControl.setRecipes(principalControl.getRecipes());
+        myRecipesControl.setRecipes(principalControl.getUser().getRecipes());
+        favRecipesControl.setRecipes(principalControl.getUser().getFavs());
+
     }
 }
