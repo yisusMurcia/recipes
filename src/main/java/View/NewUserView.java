@@ -14,7 +14,8 @@ public class NewUserView extends JFrame {
 	private final JPasswordField passwordField;
 	private final JPasswordField adminPasswordField;
     private final JComboBox rolSelection;
-	
+	private JLabel adminPasswordLbl;
+
 	public NewUserView(LoginControl loginControl) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,8 +109,10 @@ public class NewUserView extends JFrame {
 		gbc_comboBox.gridx = 2;
 		gbc_comboBox.gridy = 9;
 		contentPane.add(rolSelection, gbc_comboBox);
-		
-		JLabel adminPasswordLbl = new JLabel("Contraseña de administrador: (opcional)");
+		rolSelection.setActionCommand("Rol selection");
+		rolSelection.addActionListener(loginControl);
+
+		adminPasswordLbl = new JLabel("Contraseña de administrador: (opcional)");
 		adminPasswordLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		adminPasswordLbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_adminPasswordLbl = new GridBagConstraints();
@@ -118,6 +121,7 @@ public class NewUserView extends JFrame {
 		gbc_adminPasswordLbl.gridx = 2;
 		gbc_adminPasswordLbl.gridy = 10;
 		contentPane.add(adminPasswordLbl, gbc_adminPasswordLbl);
+		adminPasswordLbl.setEnabled(false);
 		
 		adminPasswordField = new JPasswordField();
 		GridBagConstraints gbc_passwordField_1 = new GridBagConstraints();
@@ -126,6 +130,7 @@ public class NewUserView extends JFrame {
 		gbc_passwordField_1.gridx = 2;
 		gbc_passwordField_1.gridy = 11;
 		contentPane.add(adminPasswordField, gbc_passwordField_1);
+		adminPasswordField.setEnabled(false);
 		
 		JButton signUpBtn = new JButton("Registrarme");
         signUpBtn.setActionCommand("signup");
@@ -143,6 +148,7 @@ public class NewUserView extends JFrame {
     public String getName() {
         return tfUser.getText();
     }
+
     public String getPassword() {
         return new String(passwordField.getPassword());
     }
@@ -154,6 +160,14 @@ public class NewUserView extends JFrame {
     public String getRol() {
         return rolSelection.getSelectedItem().toString();
     }
+
+	public JPasswordField getAdminPasswordField() { return passwordField; }
+
+	public JLabel getAdminPasswordLbl() { return adminPasswordLbl; }
+
+	public String getRolSelection() {
+		return rolSelection.getSelectedItem().toString();
+	}
 
     public void alertNameError() {
         JOptionPane.showMessageDialog(this, "El nombre de usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);

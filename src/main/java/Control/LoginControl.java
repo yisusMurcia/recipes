@@ -51,6 +51,16 @@ public class LoginControl implements ActionListener {
                 } catch (NullPassError ex) {
                     newUserView.alertNullPassError();
                 }
+            case "Rol selection":
+                String selectedRol = (String) newUserView.getRolSelection();
+                if (selectedRol.equals("Admin")) {
+                    newUserView.getAdminPasswordField().setEnabled(true);
+                    newUserView.getAdminPasswordLbl().setEnabled(true);
+                } else {
+                    newUserView.getAdminPasswordField().setEnabled(false);
+                    newUserView.getAdminPasswordLbl().setEnabled(false);
+                }
+            }
         }
     }
 
