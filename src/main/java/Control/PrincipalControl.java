@@ -5,12 +5,12 @@ import Model.*;
 import java.util.ArrayList;
 
 public class PrincipalControl {
-    private ArrayList<Recipe> recipes;
+    private final ArrayList<Recipe> recipes;
     private User user;
     private final UserControl userControl;
 
     public PrincipalControl() {
-        ViewControl viewControl = new ViewControl(this);
+        new ViewControl(this);//Initialize view
         userControl = new UserControl();
         recipes = new ArrayList<>();
 

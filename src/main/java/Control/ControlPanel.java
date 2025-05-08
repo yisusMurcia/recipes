@@ -10,8 +10,7 @@ import java.util.ArrayList;
 
 public class ControlPanel implements ActionListener {
     private ArrayList<Recipe> recipes;
-    private int currentRecipeIndex;
-    private RecipePanel recipePanel;
+    private final RecipePanel recipePanel;
     private final ViewControl viewControl;
     public ControlPanel(ArrayList<Recipe> recipes, ViewControl viewControl) {
         this.recipes = recipes;
@@ -39,7 +38,7 @@ public class ControlPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        currentRecipeIndex = recipePanel.getRecipeIndex();
+        int currentRecipeIndex = recipePanel.getRecipeIndex();
         //Break if recipe not found
         if(currentRecipeIndex == -1) {
             return;

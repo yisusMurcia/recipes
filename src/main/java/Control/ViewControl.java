@@ -10,7 +10,6 @@ public class ViewControl implements ActionListener {
 
     private final PrincipalControl principalControl;
     private final StartingView startingView;
-    private static int contador = 0;
     private ControlPanel allRecipesControl;
     private ControlPanel myRecipesControl;
     private ControlPanel favRecipesControl;
@@ -31,7 +30,7 @@ public class ViewControl implements ActionListener {
         myRecipesControl = new ControlPanel(principalControl.getUser().getRecipes(), this);
         favRecipesControl = new ControlPanel(principalControl.getUser().getFavs(), this);
 
-        new PrincipalView(this,  allRecipesControl, favRecipesControl, myRecipesControl);
+        new PrincipalView(allRecipesControl, favRecipesControl, myRecipesControl);
     }
 
     @Override

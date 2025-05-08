@@ -9,17 +9,13 @@ import java.util.ArrayList;
 
 public class RecipePanel extends JPanel {
 
-    private JLabel recipeNameLbl;
-    private JLabel instructionsLbl;
-    private JLabel ingredientsLbl;
-    private JTextPane ingredientsTp;
-    private JButton nextBtn;
-    private JButton previousBtn;
+    private final JLabel recipeNameLbl;
+    private final JLabel instructionsLbl;
+    private final JLabel ingredientsLbl;
+    private final JTextPane ingredientsTp;
     private Recipe recipe;
     private ArrayList<Recipe> recipes;
-    private final JButton newRecipeBtn;
-    private final JButton editRecipeBtn;
-    private JButton giveFavBtn;
+    private final JButton giveFavBtn;
     private final ControlPanel controlPanel;
 
     public RecipePanel(ArrayList<Recipe> recipes, ControlPanel controlPanel) {
@@ -59,11 +55,11 @@ public class RecipePanel extends JPanel {
         // Panel inferior para los botones
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 10)); // Espaciado entre botones
 
-        editRecipeBtn = new JButton("Editar");
+        JButton editRecipeBtn = new JButton("Editar");
         editRecipeBtn.setActionCommand("edit");
         editRecipeBtn.addActionListener(controlPanel);
 
-        nextBtn = new JButton("-->");
+        JButton nextBtn = new JButton("-->");
         nextBtn.setActionCommand("next");
         nextBtn.addActionListener(controlPanel);
 
@@ -71,11 +67,11 @@ public class RecipePanel extends JPanel {
         giveFavBtn.setActionCommand("giveFav");
         giveFavBtn.addActionListener(controlPanel);
 
-        previousBtn = new JButton("<--");
+        JButton previousBtn = new JButton("<--");
         previousBtn.setActionCommand("previous");
         previousBtn.addActionListener(controlPanel);
 
-        newRecipeBtn = new JButton("Subir receta");
+        JButton newRecipeBtn = new JButton("Subir receta");
         newRecipeBtn.setActionCommand("new");
         newRecipeBtn.addActionListener(controlPanel);
 
