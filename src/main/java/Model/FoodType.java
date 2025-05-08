@@ -1,5 +1,5 @@
 package Model;
 
 public enum FoodType {
-    SWEET, SAVORY, SPICY, SOUR, BITTER, UMAMI;
+    SWEET, SAVORY, SPICY, SOUR, BITTER, UMAMI, VEGAN;
 }

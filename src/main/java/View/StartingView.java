@@ -6,19 +6,20 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class MainView extends JFrame {
+public class StartingView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final ViewControl viewControl;
 
-	public MainView(ViewControl viewControl) {
+	public StartingView(ViewControl viewControl) {
 		
 		this.viewControl = viewControl;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane.setBackground(new Color(48, 29, 24));
+
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(48, 29, 24));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();

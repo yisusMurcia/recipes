@@ -4,10 +4,7 @@ import Control.LoginControl;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Font;
-import java.awt.Insets;
+import java.awt.*;
 
 public class LoginView extends JFrame {
     private final JTextField tfUser;
@@ -18,6 +15,7 @@ public class LoginView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
         JPanel contentPane = new JPanel();
+		contentPane.setBackground(new Color(48, 29, 24));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -37,6 +35,7 @@ public class LoginView extends JFrame {
 		contentPane.add(panel, gbc_panel);
 		
 		JLabel lblNewLabel = new JLabel("Que grato volvernos a ver");
+		lblNewLabel.setForeground(new Color(240, 245, 238));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -45,6 +44,7 @@ public class LoginView extends JFrame {
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JLabel loginLbl = new JLabel("Inicia sesión en tu cuenta:");
+		loginLbl.setForeground(new Color(240, 245, 238));
 		loginLbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_singInLbl = new GridBagConstraints();
 		gbc_singInLbl.insets = new Insets(0, 0, 5, 5);
@@ -53,6 +53,7 @@ public class LoginView extends JFrame {
 		contentPane.add(loginLbl, gbc_singInLbl);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
+		lblUsuario.setForeground(new Color(240, 245, 238));
 		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
@@ -72,6 +73,7 @@ public class LoginView extends JFrame {
 		tfUser.setColumns(10);
 		
 		JLabel labelPassword = new JLabel("Contraseña:");
+		labelPassword.setForeground(new Color(240, 245, 238));
 		labelPassword.setHorizontalAlignment(SwingConstants.LEFT);
 		labelPassword.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblPassword = new GridBagConstraints();
@@ -91,6 +93,7 @@ public class LoginView extends JFrame {
 		contentPane.add(tfPassword, gbc_tfPassword);
 		
 		JButton btnLogin = new JButton("Iniciar sesión");
+		btnLogin.setBackground(new Color(199, 171, 125));
 		btnLogin.setActionCommand("login");
 		btnLogin.addActionListener(loginControl);
 

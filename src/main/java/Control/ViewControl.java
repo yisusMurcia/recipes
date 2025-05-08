@@ -1,7 +1,7 @@
 package Control;
 
-import View.MainView;
 import View.PrincipalView;
+import View.StartingView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,13 +9,13 @@ import java.awt.event.ActionListener;
 public class ViewControl implements ActionListener {
 
     private final PrincipalControl principalControl;
-    private final MainView mainView;
+    private final StartingView startingView;
     private static int contador = 0;
 
     public ViewControl(PrincipalControl principalControl) {
         this.principalControl = principalControl;
-        //Create MainView
-        mainView = new MainView(this);
+        //Create StartingView
+        startingView = new StartingView(this);
     }
 
     public PrincipalControl getPrincipalControl() {
@@ -23,13 +23,16 @@ public class ViewControl implements ActionListener {
     }
 
     public void createMYAccount(){
-        new PrincipalView(this, principalControl.getUser());
+        //Crear algunas recetas
+
+        //ControlPanel allRecipesControl = new ControlPanel("A por más recetas", principalControl.getRecipes());
+        new PrincipalView(this, principalControl.getUser(), new ControlPanel("A por más recetas", principalControl.getRecipes()), new ControlPanel("A por más recetas", principalControl.getRecipes()), new ControlPanel("A por más recetas", principalControl.getRecipes()));
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         LoginControl loginControl = new LoginControl(this);
-        mainView.dispose();
+        startingView.dispose();
         switch (e.getActionCommand()) {
             case "login":
                 loginControl.createLoginView();
@@ -38,7 +41,7 @@ public class ViewControl implements ActionListener {
                 loginControl.createNewUserView();
                 break;
             default:
-                mainView.alertBrokenSystem();
+                startingView.alertBrokenSystem();
                 break;
         }
     }

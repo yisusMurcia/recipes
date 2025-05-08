@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Control.ControlPanel;
 import Control.ViewControl;
 import Model.User;
 
@@ -27,7 +28,7 @@ public class PrincipalView extends JFrame {
 
 	private User user;
 
-	public PrincipalView(ViewControl viewControl, User user) {
+	public PrincipalView(ViewControl viewControl, User user, ControlPanel controlAllRecipes, ControlPanel controlFavRecipes, ControlPanel controlMyRecipes) {
 		this.viewControl = viewControl;
 		this.user = user;
 
@@ -51,60 +52,14 @@ public class PrincipalView extends JFrame {
 		gbc_tabbedPane.gridx = 1;
 		gbc_tabbedPane.gridy = 1;
 		contentPane.add(tabbedPane, gbc_tabbedPane);
-		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("Mis recetas", null, panel, null);
-		panel.setLayout(null);
-		
-		JPanel panelRecipe = new JPanel();
-		panelRecipe.setBounds(10, 11, 216, 136);
-		panel.add(panelRecipe);
-		panelRecipe.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Nom receta");
-		lblNewLabel.setBounds(88, 11, 55, 14);
-		panelRecipe.add(lblNewLabel);
-		
-		lblInstrucciones = new JLabel("Instrucciones:");
-		lblInstrucciones.setBounds(10, 111, 83, 14);
-		panelRecipe.add(lblInstrucciones);
-		
-		JLabel lblIngredientes = new JLabel("Ingredientes:");
-		lblIngredientes.setBounds(10, 36, 83, 14);
-		panelRecipe.add(lblIngredientes);
-		
-		tpIngredientes = new JTextPane();
-		tpIngredientes.setBounds(10, 57, 195, 46);
-		panelRecipe.add(tpIngredientes);
-		
-		btnNext = new JButton("-->");
-		btnNext.setBounds(259, 41, 52, 23);
-		panel.add(btnNext);
-		
-		btnPrevious = new JButton("<--");
-		btnPrevious.setBounds(259, 86, 52, 23);
-		panel.add(btnPrevious);
-		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Mis favoritos", null, panel_1, null);
+
+		tabbedPane.addTab("A por más recetas", null, controlAllRecipes.createPanel(), null);
+
+		tabbedPane.addTab("Mis recetas", null, controlMyRecipes.createPanel(), null);
+
+		tabbedPane.addTab("Mis favoritos", null, controlFavRecipes.createPanel(), null);
 		
 		setVisible(true);
-	}
-	
-	public JButton getBtnNext() {
-		return btnNext;
-	}
-	
-	public JButton getBtnPrevious() {
-		return btnPrevious;
-	}
-	
-	public JLabel getLblInstrucciones() {
-		return lblInstrucciones;
-	}
-	
-	public JTextPane getTpIngredientes() {
-		return tpIngredientes;
 	}
 
 	public void setIngredientsText(ArrayList<String> ingredients){

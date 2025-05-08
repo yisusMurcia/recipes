@@ -12,6 +12,14 @@ public class PrincipalControl {
     public PrincipalControl() {
         ViewControl viewControl = new ViewControl(this);
         userControl = new UserControl();
+        recipes = new ArrayList<>();
+
+        //Crear algunas recetas
+        Recipe recipe1 = new Recipe("receta 1", "no se", "ingrediente1,ingrediente2".split(","), new FoodType[]{FoodType.VEGAN}, new FoodIntention[]{FoodIntention.LUNCH}, null);
+        Recipe recipe2 = new Recipe("receta 2", "no se", "ingrediente1,ingrediente2".split(","), new FoodType[]{FoodType.VEGAN}, new FoodIntention[]{FoodIntention.LUNCH}, null);
+
+        recipes.add(recipe1);
+        recipes.add(recipe2);
     }
     
     public User getUser() {

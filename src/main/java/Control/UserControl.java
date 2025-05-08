@@ -15,7 +15,7 @@ public class UserControl {
         users = new ArrayList<>();
 
         //Create some users
-        users.add(new User("user1", "password1"));
+        users.add(new User("u", "u"));
         users.add(new User("user2", "password2"));
     }
 

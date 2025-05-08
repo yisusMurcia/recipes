@@ -1,5 +1,5 @@
 package Model;
 
 public enum FoodIntention {
-    HEALTHY, BREAKFAST, SNACK, LAUNCH, DINNER;
+    HEALTHY, BREAKFAST, SNACK, LUNCH, DINNER;
 }

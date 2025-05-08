@@ -166,7 +166,7 @@ public class NewUserView extends JFrame {
         return rolSelection.getSelectedItem().toString();
     }
 
-	public JPasswordField getAdminPasswordField() { return passwordField; }
+	public JPasswordField getAdminPasswordField() { return adminPasswordField; }
 
 	public JLabel getAdminPasswordLbl() { return adminPasswordLbl; }
 
