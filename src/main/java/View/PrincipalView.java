@@ -7,11 +7,9 @@ import javax.swing.border.EmptyBorder;
 import Control.ViewControl;
 import Model.User;
 
-import java.awt.GridBagLayout;
+import java.awt.*;
 import javax.swing.JTabbedPane;
 
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.util.ArrayList;
@@ -38,6 +36,7 @@ public class PrincipalView extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(new Color(48, 29, 24));
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0};
