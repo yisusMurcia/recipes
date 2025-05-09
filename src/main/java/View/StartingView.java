@@ -11,6 +11,8 @@ public class StartingView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final ViewControl viewControl;
+	private Image image;
+	private final JPanel imagePanel;
 
 	public StartingView(ViewControl viewControl) {
 		
@@ -29,13 +31,26 @@ public class StartingView extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JPanel panel = new JPanel();
+		imagePanel = new JPanel(){
+			@Override
+			public void paintComponent(Graphics g) {
+				int width = this.getSize().width;
+				int height = this.getSize().height;
+
+				if (image != null) {
+					g.drawImage(image, 0, 0, width, height, null);
+				}
+
+				super.paintComponent(g);
+			}
+		};
+		setImage("src/main/java/Images/image_1.png",imagePanel);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridheight = 7;
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 4;
 		gbc_panel.gridy = 0;
-		contentPane.add(panel, gbc_panel);
+		contentPane.add(imagePanel, gbc_panel);
 		
 		JLabel lblSlogan = new JLabel("Recetas de cocina para todos los gustos");
 		lblSlogan.setForeground(new Color(240, 245, 238));
@@ -83,6 +98,12 @@ public class StartingView extends JFrame {
 
 	public void alertBrokenSystem(){
 		JOptionPane.showMessageDialog(this, "Felicitaciones, has roto el programa");
+	}
+
+    public void setImage(String imageRoute, JPanel panel) {
+		panel.setOpaque(false);
+		image = new ImageIcon(imageRoute).getImage();
+		panel.repaint();
 	}
 
 }
