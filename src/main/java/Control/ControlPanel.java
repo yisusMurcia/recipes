@@ -45,6 +45,7 @@ public class ControlPanel implements ActionListener {
         }
 
         Recipe recipe = recipes.get(currentRecipeIndex);
+
         switch (e.getActionCommand()){
             case "next":
                 if(currentRecipeIndex < recipes.size() - 1){
@@ -63,7 +64,8 @@ public class ControlPanel implements ActionListener {
             case "edit":
                 //Verify if the user is admin or is the creator
                 if(viewControl.getPrincipalControl().getUser().getClass() == Admin.class ||recipe.getOwner().equals(viewControl.getPrincipalControl().getUser()) ){
-                    //Crear vista
+                    new RecipeControl(recipe, this);
+
                 }else{
                     recipePanel.alertPermisionInvalid();
                 }
@@ -77,6 +79,9 @@ public class ControlPanel implements ActionListener {
                 }
                 viewControl.updateRecipes();
                 recipePanel.updateRecipe();
+                break;
+            case "new":
+                new RecipeControl( this);
         }
 
     }

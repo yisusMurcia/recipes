@@ -2,9 +2,8 @@ package Model;
 
 import java.io.Serializable;
 
-public class Recipe implements Serializable {
+public class Recipe{
     private String instructions;
-    private int numOfFavs;
     private String title;
     private String[] ingredients;
     private FoodType[] foodType;
@@ -17,7 +16,6 @@ public class Recipe implements Serializable {
         this.ingredients = ingredients;
         this.foodType = foodType;
         this.foodIntentions = foodIntentions;
-        this.numOfFavs = 0;
         this.owner = owner;
     }
 
@@ -27,14 +25,6 @@ public class Recipe implements Serializable {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
-    }
-
-    public int getNumOfFavs() {
-        return numOfFavs;
-    }
-
-    public void setNumOfFavs(int numOfFavs) {
-        this.numOfFavs = numOfFavs;
     }
 
     public String getTitle() {
@@ -71,5 +61,8 @@ public class Recipe implements Serializable {
 
     public User getOwner() {
         return owner;
+    }
+
+    public void setOwner(User user) {
     }
 }
