@@ -6,35 +6,17 @@ import javax.swing.border.EmptyBorder;
 
 import Control.ControlPanel;
 import Control.ViewControl;
-import Model.User;
 
 import java.awt.*;
 import javax.swing.JTabbedPane;
 
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.util.ArrayList;
-import javax.swing.JTextPane;
 
 public class PrincipalView extends JFrame {
+    public PrincipalView(ControlPanel controlAllRecipes, ControlPanel controlFavRecipes, ControlPanel controlMyRecipes) {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private final ViewControl viewControl;
-	private JButton btnNext;
-	private JButton btnPrevious;
-	private JLabel lblInstrucciones;
-	private JTextPane tpIngredientes;
-
-	private User user;
-
-	public PrincipalView(ViewControl viewControl, User user, ControlPanel controlAllRecipes, ControlPanel controlFavRecipes, ControlPanel controlMyRecipes) {
-		this.viewControl = viewControl;
-		this.user = user;
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setBackground(new Color(48, 29, 24));
@@ -53,25 +35,13 @@ public class PrincipalView extends JFrame {
 		gbc_tabbedPane.gridy = 1;
 		contentPane.add(tabbedPane, gbc_tabbedPane);
 
-		tabbedPane.addTab("A por más recetas", null, controlAllRecipes.createPanel(), null);
+		tabbedPane.addTab("A por más recetas", null, controlAllRecipes.getPanel(), null);
 
-		tabbedPane.addTab("Mis recetas", null, controlMyRecipes.createPanel(), null);
+		tabbedPane.addTab("Mis recetas", null, controlMyRecipes.getPanel(), null);
 
-		tabbedPane.addTab("Mis favoritos", null, controlFavRecipes.createPanel(), null);
+		tabbedPane.addTab("Mis favoritos", null, controlFavRecipes.getPanel(), null);
 		
 		setVisible(true);
-	}
-
-	public void setIngredientsText(ArrayList<String> ingredients){
-		StringBuilder ingredientsText = new StringBuilder();
-		for (String ingredient : ingredients) {
-			ingredientsText.append(ingredient).append("\n");
-		}
-		tpIngredientes.setText(ingredientsText.toString());
-	}
-
-	public void setInstructions(String instructions){
-		lblInstrucciones.setText("Instrucciones:" + instructions);
 	}
 	
 }

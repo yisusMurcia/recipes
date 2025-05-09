@@ -1,9 +1,8 @@
 package Model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User implements Serializable {
+public class User{
     protected final String name;
     protected final ArrayList<Recipe> recipes;
     protected final ArrayList<Recipe> favs;
@@ -42,9 +41,5 @@ public class User implements Serializable {
             return true;
         }
         return false;
-    }
-
-    public String getPassword() {
-        return password;
     }
 }

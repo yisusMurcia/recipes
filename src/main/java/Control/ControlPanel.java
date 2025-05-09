@@ -1,5 +1,6 @@
 package Control;
 
+import Model.Admin;
 import Model.Recipe;
 import View.RecipePanel;
 
@@ -8,26 +9,43 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ControlPanel implements ActionListener {
-    private final String title;
     private ArrayList<Recipe> recipes;
-    private int currentRecipeIndex;
-    private RecipePanel recipePanel;
-    public ControlPanel(String title, ArrayList<Recipe> recipes) {
-        this.title = title;
+    private final RecipePanel recipePanel;
+    private final ViewControl viewControl;
+    public ControlPanel(ArrayList<Recipe> recipes, ViewControl viewControl) {
         this.recipes = recipes;
-        currentRecipeIndex = 0;
+        this.viewControl = viewControl;
+
+        recipePanel = new RecipePanel(recipes, this);
     }
 
-    public RecipePanel createPanel(){
-        recipePanel = new RecipePanel(title, recipes, this);
+    public void setRecipes(ArrayList<Recipe> recipes) {
+        this.recipes = recipes;
+        if(recipePanel != null) {//Update the panel
+            recipePanel.setRecipes(recipes);
+        }
+    }
+
+    public RecipePanel getPanel(){
+
         return recipePanel;
+    }
+
+    public ViewControl getViewControl() {
+        return viewControl;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //When an action is performed, the recipePanel isn´t null
-        currentRecipeIndex = recipePanel.getRecipeIndex();
-        System.out.println(currentRecipeIndex);
+
+        int currentRecipeIndex = recipePanel.getRecipeIndex();
+        //Break if recipe not found
+        if(currentRecipeIndex == -1) {
+            return;
+        }
+
+        Recipe recipe = recipes.get(currentRecipeIndex);
+
         switch (e.getActionCommand()){
             case "next":
                 if(currentRecipeIndex < recipes.size() - 1){
@@ -43,11 +61,29 @@ public class ControlPanel implements ActionListener {
                     recipePanel.setRecipe(recipes.size() - 1);
                 }
                 break;
+            case "edit":
+                //Verify if the user is admin or is the creator
+                if(viewControl.getPrincipalControl().getUser().getClass() == Admin.class ||recipe.getOwner().equals(viewControl.getPrincipalControl().getUser()) ){
+                    new RecipeControl(recipe, this);
+
+                }else{
+                    recipePanel.alertPermisionInvalid();
+                }
+                break;
+            case "giveFav":
+                ArrayList<Recipe> favRecipes= viewControl.getPrincipalControl().getUser().getFavs();
+                if(favRecipes.contains(recipe)){
+                    favRecipes.remove(recipe);
+                }else{
+                    favRecipes.add(recipe);
+                }
+                viewControl.updateRecipes();
+                recipePanel.updateRecipe();
+                break;
+            case "new":
+                new RecipeControl( this);
         }
 
     }
 
-    public ArrayList<Recipe> getRecipes() {
-        return recipes;
-    }
 }
