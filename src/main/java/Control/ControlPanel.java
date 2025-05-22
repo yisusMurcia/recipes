@@ -63,7 +63,7 @@ public class ControlPanel implements ActionListener {
                 break;
             case "edit":
                 //Verify if the user is admin or is the creator
-                if(viewControl.getPrincipalControl().getUser().getClass() == Admin.class ||recipe.getOwner().equals(viewControl.getPrincipalControl().getUser()) ){
+                if(viewControl.getPrincipalControl().getUser().getClass() == Admin.class || recipe.getOwner().equals(viewControl.getPrincipalControl().getUser()) ){
                     new RecipeControl(recipe, this);
 
                 }else{

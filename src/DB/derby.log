@@ -1,0 +1,20 @@
+Wed May 21 15:40:34 COT 2025 : Servidor de red Apache Derby: Se ha iniciado 10.17.1.0 - (1913217) y está listo para aceptar las conexiones en el puerto 1527
+----------------------------------------------------------------
+Wed May 21 15:40:34 COT 2025:
+ Iniciando instancia a816c00e-0196-f493-9320-ffff931695c7 de Derby, versión The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): 
+en el directorio de base de datos C:\Users\julia\OneDrive\Documentos\recipesInJava\src\DB\recipes con el cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
+Cargado desde file:/C:/Users/julia/OneDrive/Documentos/recipesInJava/db-derby-10.17.1.0-lib/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=22+36-2370
+user.dir=C:\Users\julia\OneDrive\Documentos\recipesInJava\db-derby-10.17.1.0-lib
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\julia\OneDrive\Documentos\recipesInJava\src\DB
+Cargador de clases de base de datos iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Wed May 21 15:46:42 COT 2025: cerrando motor de Derby
+----------------------------------------------------------------
+Wed May 21 15:46:42 COT 2025:
+Cerrando la instancia a816c00e-0196-f493-9320-ffff931695c7 en el directorio de base de datos C:\Users\julia\OneDrive\Documentos\recipesInJava\src\DB\recipes con cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
+----------------------------------------------------------------
